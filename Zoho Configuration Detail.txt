@@ -1,0 +1,149 @@
+1 You Sign In on Zoho App.
+2 https://api-console.zoho.com/ open this link and add Server Based Client
+3 Fill this form with client Name like Danish Waqad, Homepage URL like http://localhost:3000/
+and last Authorized Redirect Url is http://localhost:3000/zoho/insert-records
+4 Then open this link https://www.zoho.com/creator/help/api/v2/authorization-request.html and
+copy this link from it
+https://accounts.zoho.com/oauth/v2/auth?response_type=code&client_id=<client_id>
+&scope=<scope>&redirect_uri=<redirect_uri>&access_type=offline
+5 Modify this link with client ID,Scope and redirect_uri
+https://accounts.zoho.com/oauth/v2/auth?response_type=code&client_id=<client_id>&
+scope=<scope>&redirect_uri=<redirect_uri>&access_type=offline
+
+Redirect Uri : http://localhost:3000/zoho/insert-records
+
+Scope is 
+ZohoCRM.users.ALL,ZohoCRM.org.ALL,ZohoCRM.modules.ALL,
+ZohoCRM.bulk.ALL,ZohoCRM.notifications.READ,ZohoCRM.notifications.CREATE,
+ZohoCRM.notifications.UPDATE,ZohoCRM.notifications.DELETE,ZohoCRM.coql.READ,
+ZohoCRM.modules.ALL,ZohoCRM.settings.ALL,ZohoCRM.settings.modules.ALL,
+ZohoCRM.settings.fields.ALL,ZohoCRM.settings.layouts.ALL,ZohoCRM.org.ALL,
+ZohoCRM.org.READ,ZohoCRM.notifications.ALL,ZohoCRM.notifications.CREATE,
+ZohoCRM.notifications.WRITE,ZohoCRM.notifications.UPDATE,
+ZohoCRM.notifications.DELETE,ZohoCRM.bulk.READ,
+ZohoCRM.modules.notes.ALL,ZohoCRM.modules.notes.READ,
+ZohoCRM.modules.notes.WRITE,ZohoCRM.modules.notes.CREATE,
+ZohoCRM.modules.notes.DELETE,ZohoCRM.functions.execute.READ,
+ZohoCRM.functions.execute.CREATE,ZohoCRM.bulk.ALL,
+ZohoCRM.files.CREATE,ZohoCRM.coql.READ,
+ZohoCRM.chat.slashcommand.READ,
+ZohoCRM.send_mail.accounts.Create,
+ZohoCRM.send_mail.contacts.Create,
+ZohoCRM.send_mail.custom.Create,
+ZohoCRM.modules.leads.ALL,
+ZohoCRM.modules.accounts.ALL,
+ZohoCRM.modules.contacts.ALL,
+ZohoCRM.modules.deals.ALL,
+ZohoCRM.modules.custom.ALL,
+ZohoCRM.mass_update.leads.UPDATE,
+ZohoCRM.mass_update.accounts.UPDATE,
+ZohoCRM.mass_update.contacts.UPDATE,
+ZohoCRM.mass_update.deals.UPDATE,
+ZohoCRM.mass_update.campaigns.UPDATE,
+ZohoCRM.mass_update.activities.UPDATE,
+ZohoCRM.mass_update.solutions.UPDATE,
+ZohoCRM.mass_update.products.UPDATE,
+ZohoCRM.mass_update.vendors.UPDATE,
+ZohoCRM.mass_update.pricebooks.UPDATE,
+ZohoCRM.mass_update.quotes.UPDATE,
+ZohoCRM.mass_update.salesorders.UPDATE,
+ZohoCRM.mass_update.purchaseorders.UPDATE,
+ZohoCRM.mass_update.invoices.UPDATE,
+ZohoCRM.mass_update.custom.UPDATE,
+ZohoCRM.Files.READ,ZohoCRM.modules.attachments.all,
+ZohoCRM.send_mail.all.CREATE,ZohoCRM.signals.ALL
+
+copy client ID from this link https://api-console.zoho.com/ 
+
+Now your Url is complete like it when you paste these things
+https://accounts.zoho.com/oauth/v2/auth?response_type=code&
+client_id=1000.Y3AGBJFILQOWFYIG28NAUHGLAGQ8CN&
+scope=ZohoCRM.users.ALL,ZohoCRM.org.ALL,ZohoCRM.modules.ALL,
+ZohoCRM.bulk.ALL,ZohoCRM.notifications.READ,ZohoCRM.notifications.CREATE,
+ZohoCRM.notifications.UPDATE,ZohoCRM.notifications.DELETE,
+ZohoCRM.coql.READ,ZohoCRM.modules.ALL,ZohoCRM.settings.ALL,
+ZohoCRM.settings.modules.ALL,ZohoCRM.settings.fields.ALL,
+ZohoCRM.settings.layouts.ALL,ZohoCRM.org.ALL,
+ZohoCRM.org.READ,ZohoCRM.notifications.ALL,
+ZohoCRM.notifications.CREATE,ZohoCRM.notifications.WRITE,
+ZohoCRM.notifications.UPDATE,ZohoCRM.notifications.DELETE,
+ZohoCRM.bulk.READ,ZohoCRM.modules.notes.ALL,
+ZohoCRM.modules.notes.READ,ZohoCRM.modules.notes.WRITE,ZohoCRM.modules.notes.CREATE,
+ZohoCRM.modules.notes.DELETE,ZohoCRM.functions.execute.READ,
+ZohoCRM.functions.execute.CREATE,ZohoCRM.bulk.ALL,
+ZohoCRM.files.CREATE,ZohoCRM.coql.READ,ZohoCRM.chat.slashcommand.READ,
+ZohoCRM.send_mail.accounts.Create,ZohoCRM.send_mail.contacts.Create,
+ZohoCRM.send_mail.custom.Create,ZohoCRM.modules.leads.ALL,
+ZohoCRM.modules.accounts.ALL,ZohoCRM.modules.contacts.ALL,
+ZohoCRM.modules.deals.ALL,ZohoCRM.modules.custom.ALL,
+ZohoCRM.mass_update.leads.UPDATE,ZohoCRM.mass_update.accounts.UPDATE,
+ZohoCRM.mass_update.contacts.UPDATE,ZohoCRM.mass_update.deals.UPDATE,
+ZohoCRM.mass_update.campaigns.UPDATE,ZohoCRM.mass_update.activities.UPDATE,
+ZohoCRM.mass_update.solutions.UPDATE,ZohoCRM.mass_update.products.UPDATE,
+ZohoCRM.mass_update.vendors.UPDATE,ZohoCRM.mass_update.pricebooks.UPDATE,
+ZohoCRM.mass_update.quotes.UPDATE,ZohoCRM.mass_update.salesorders.UPDATE,
+ZohoCRM.mass_update.purchaseorders.UPDATE,ZohoCRM.mass_update.invoices.UPDATE,
+ZohoCRM.mass_update.custom.UPDATE,ZohoCRM.Files.READ,ZohoCRM.modules.attachments.all,
+ZohoCRM.send_mail.all.CREATE,
+ZohoCRM.signals.ALL&redirect_uri=http://localhost:3000/zoho/insert-records&
+access_type=offline
+
+
+this url paste on browser then click on it after accept it all then blank page
+display in your browser after to accept it this page cannot be close.
+
+6 Open this link https://www.zoho.com/creator/help/api/v2/generate-token.html and
+copy this link from it
+curl "https://accounts.zoho.com/oauth/v2/token?grant_type=authorization_code&code=1000.xxxxxxd34d.xxxxxxx909a&client_id=1000.xxxxxxxxxxHF2C6H&redirect_uri=https://www.zylker.com/callback&client_secret=xxxxxxxxx4f4f7a"
+-X POST
+same as it is import to postman 
+then copy (code) from blank page url
+and paste it postman code option
+and client id and client secret
+https://api-console.zoho.com/ open this link and copy these id and secret
+and paste in postman.
+redirect uri again
+http://localhost:3000/zoho/insert-records
+now send button click 
+after this you have some output receive like that
+refresh token or access token like that
+now you copy refresh token
+7 Now you open this link 
+https://www.zoho.com/creator/help/api/v2/refresh-the-access-token.html
+and copy this link from it
+curl "https://accounts.zoho.com/oauth/v2/token?refresh_token=1000.3ph66exxxxxxx6ce34.3c4xxxxxxxxxf&client_id=1000.xxxxxxxxxxHF2C6H&client_secret=xxxxxxxxx4f4f7a&grant_type=refresh_token"
+- POST
+this link same as it import on postman
+then client id and client secret same as it
+but now use previous copy refresh token and click on send button
+now you have to receive access token 
+8 If you want to insert data from postman then open this link
+https://www.zoho.com/crm/developer/docs/api/v2/insert-records.html
+and now copy this link from it
+curl "https://www.zohoapis.com/crm/v2/Leads"
+-H "Authorization: Zoho-oauthtoken 1000.8cb99dxxxxxxxxxxxxx9be93.9b8xxxxxxxxxxxxxxxf"
+-d "@newlead.json"
+-X POST
+and this url import on postman after it Headers option Select and paste
+accesstoken front of Zoho-oauthtoken then body raw option select and enter data
+{
+  "data": [
+    {
+    "First_Name": "Danish",
+    "Last_Name": "Waqad",
+    "Email":"danishwaqad@gmail.com",
+    "Phone":"03417006667"
+    }
+  ]
+}
+like it.
+Now if you send request this data insert it successfully.
+
+9 If you want to view this data then open this link
+https://crm.zoho.com/crm/org813702426/tab/Leads/
+
+10 if your own html page then refresh token copy from postman and past it in you code
+and client id and client secret same as it is now you open http://localhost:3000/
+and input your data you have to received an message after submit this data
+,your data inserted succesfully.update option is also available in my code
+if you same data insert then update this record.

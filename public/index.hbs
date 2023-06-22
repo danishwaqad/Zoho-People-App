@@ -1,40 +1,338 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
-  <meta charset="UTF-8" />
-  <title>Zoho API Form</title>
+  <title>Zoho App</title>
+  <style>
+    body {
+      background-color: #f2f2f2;
+    }
+
+    /* Container for centering the form */
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    /* Form styles */
+    form {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      width: 100%;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      color: #333333;
+    }
+
+    input {
+      width: 100%;
+      padding: 5px;
+      margin-bottom: 10px;
+      border: 1px solid #cccccc;
+      border-radius: 3px;
+    }
+    select {
+      width: 100%;
+      padding: 5px;
+      margin-bottom: 10px;
+      border: 1px solid #cccccc;
+      border-radius: 3px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: #ffffff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
 </head>
 <body>
-<h1>Zoho API Form</h1>
-<form action="/zoho/insert-records" method="post">
-  <label for="firstname">First Name:</label>
-  <input type="text" name="firstname" id="firstname" required /><br />
+<div class="container">
+  <form action="/zoho" id="MyFormID" method="POST">
+    <h1 style="text-align: center;">Zoho App</h1>
 
-  <label for="lastname">Last Name:</label>
-  <input type="text" name="lastname" id="lastname" required /><br />
+    <label for="EmployeeID">Employee ID:</label>
+    <input type="text" name="EmployeeID" id="EmployeeID" readonly required>
 
-  <label for="email">Email:</label>
-  <input type="email" name="email" id="email" required /><br />
+    <label for="FirstName">First Name:</label>
+    <input type="text" name="FirstName" id="FirstName" required>
 
-  <label for="phone">Phone:</label>
-  <input type="text" name="phone" id="phone" required /><br />
+    <label for="LastName">Last Name:</label>
+    <input type="text" name="LastName" id="LastName" required>
 
-  <button type="submit">Submit</button>
-</form>
+    <label for="EmailID">Email ID:</label>
+    <input type="email" name="EmailID" id="EmailID" required>
 
-<!-- Success message -->
-<div id="success-message" style="display: none;">Record inserted successfully</div>
+    <label for="Designation">Designation:</label>
+    <select name="Designation" id="Designation" required onchange="handleDesignationChange(this)">
+      <option value="">Select Designation</option>
+      <optgroup label="Level 1: for now">
+      <option value="755304000000265235">Chief Executive Officer (CEO)</option>
+      </optgroup>
+      <optgroup label="Level 2: For Future">
+      <option value="755304000000265255">Board of Director</option>
+      <option value="755304000000265245">Chairman of the Board</option>
+      </optgroup>
+      <optgroup label="Level 3: Executives">
+      <option value="755304000000270021">Chief Operating Officer (COO)</option>
+      <option value="755304000000270031">Chief Financial Officer (CFO)</option>
+      <option value="755304000000270041">Chief Business Development Officer (CBDO)</option>
+      <option value="755304000000270051">Chief Technology Officer (CTO)</option>
+      <option value="755304000000270061">Chief Information Officer (CIO)</option>
+      <option value="755304000000270071">Chief Marketing Officer (CMO)</option>
+      </optgroup>
+      <optgroup label="Level 4: Directors">
+      <option value="755304000000270081">Director of Software Development</option>
+      <option value="755304000000270091">Director of Quality Assurance</option>
+      <option value="755304000000270101">Director of Sales</option>
+      <option value="755304000000270111">Director of Marketing</option>
+      <option value="755304000000270121">Director of Human Resources</option>
+      </optgroup>
+      <optgroup label="Level 5: Managers">
+      <option value="755304000000270131">Software Development Manager</option>
+      <option value="755304000000270141">Office Administration Manager</option>
+      <option value="755304000000270151">Quality Assurance Manager</option>
+      <option value="755304000000270161">Sales Manager</option>
+      <option value="755304000000270171">Marketing Manager</option>
+      <option value="755304000000270181">HR Manager</option>
+      </optgroup>
+      <optgroup label="Level 6: Team Leads/Supervisors">
+      <option value="755304000000270191">Software Development Team Lead</option>
+      <option value="755304000000270201">HR Assistant</option>
+      <option value="755304000000270211">Quality Assurance Team Lead</option>
+      <option value="755304000000270221">Sales Team Lead</option>
+      <option value="755304000000270231">Marketing Team Lead</option>
+      <option value="755304000000270241">Design & Research Team Lead</option>
+      </optgroup>
+      <optgroup label="Level 7: Individual Contributors/Main Workforce">
+      <option value="755304000000270251">Software Developers/Engineers</option>
+      <option value="755304000000270261">Quality Assurance Engineers</option>
+      <option value="755304000000270271">Sales Representatives</option>
+      <option value="755304000000270281">Marketing Specialists</option>
+      <option value="755304000000270291">Content Writers</option>
+      <option value="755304000000270301">Front-end/back-end/flutter/full-stack/web Developer</option>
+      <option value="755304000000270311">Listings Specialists</option>
+      <option value="755304000000270321">Google Ads Specialist</option>
+      <option value="755304000000270331">Graphics Designers</option>
+      </optgroup>
+      <optgroup label="Level 8: Interns/Trainees">
+      <option value="755304000000270341">Software Developer Intern</option>
+      <option value="755304000000270351">QA Intern</option>
+      <option value="755304000000270361">Sales Intern</option>
+      <option value="755304000000270371">Marketing Intern</option>
+      <optgroup label="Level 9: Office operations/Administration">
+      <option value="755304000000270381">Office boy</option>
+      <option value="755304000000270391">All security staff</option>
+      <option value="755304000000270401">Etcetera</option>
+      </optgroup>
+    </select>
 
-<script>
-  // Show success message if the query parameter exists
-  const urlParams = new URLSearchParams(window.location.search);
-  const isSuccess = urlParams.get('success');
-  if (isSuccess === 'true') {
-    const successMessage = document.getElementById('success-message');
-    if (successMessage) {
-      successMessage.style.display = 'block';
+    <label for="Department">Department:</label>
+    <select name="Department" id="Department" required onchange="handleDepartmentChange(this)">
+      <option value="">Select Department</option>
+      <optgroup label="Marketing Department">
+        <option value="755304000000265287">Marketing Department</option>
+      </optgroup>
+      <optgroup label="Design & Research Department">
+        <option value="755304000000271009">Design & Research Department</option>
+      </optgroup>
+      <optgroup label="Ecommerce Division">
+        <option value="755304000000271019">Ecommerce Division</option>
+      </optgroup>
+      <optgroup label="Software Development">
+        <option value="755304000000271029">Software Development</option>
+      </optgroup>
+      <optgroup label="Human Resources Department">
+        <option value="755304000000271039">Human Resources Department</option>
+      </optgroup>
+    </select>
+    <label for="DateOfJoining">Date Of Joining:</label>
+    <input type="date" id="DateOfJoining" name="DateOfJoining" onchange="updateEmployeeID()">
+    <button type="submit">Submit</button>
+  </form>
+  <script>
+    let departmentValue = "";
+    let selectedDesignation = "";
+    function handleDesignationChange(DesignationSelect) {
+      switch (DesignationSelect.value) {
+        case "755304000000265235":
+          selectedDesignation = "1";
+          break;
+        case "755304000000265255":
+          selectedDesignation = "2";
+          break;
+        case "755304000000265245":
+          selectedDesignation = "2";
+          break;
+        case "755304000000270021":
+          selectedDesignation = "3";
+          break;
+        case "755304000000270031":
+          selectedDesignation = "3";
+          break;
+        case "755304000000270041":
+          selectedDesignation = "3";
+          break;
+        case "755304000000270051":
+          selectedDesignation = "3";
+          break;
+        case "755304000000270061":
+          selectedDesignation = "3";
+          break;
+        case "755304000000270071":
+          selectedDesignation = "3";
+          break;
+        case "755304000000270081":
+          selectedDesignation = "4";
+          break;
+        case "755304000000270091":
+          selectedDesignation = "4";
+          break;
+        case "755304000000270101":
+          selectedDesignation = "4";
+          break;
+        case "755304000000270111":
+          selectedDesignation = "4";
+          break;
+        case "755304000000270121":
+          selectedDesignation = "4";
+          break;
+        case "755304000000270131":
+          selectedDesignation = "5";
+          break;
+        case "755304000000270141":
+          selectedDesignation = "5";
+          break;
+        case "755304000000270151":
+          selectedDesignation = "5";
+          break;
+        case "755304000000270161":
+          selectedDesignation = "5";
+          break;
+        case "755304000000270171":
+          selectedDesignation = "5";
+          break;
+        case "755304000000270181":
+          selectedDesignation = "5";
+          break;
+        case "755304000000270191":
+          selectedDesignation = "6";
+          break;
+        case "755304000000270201":
+          selectedDesignation = "6";
+          break;
+        case "755304000000270211":
+          selectedDesignation = "6";
+          break;
+        case "755304000000270221":
+          selectedDesignation = "6";
+          break;
+        case "755304000000270231":
+          selectedDesignation = "6";
+          break;
+        case "755304000000270241":
+          selectedDesignation = "6";
+          break;
+        case "755304000000270251":
+          selectedDesignation = "7";
+          break;
+        case "755304000000270261":
+          selectedDesignation = "7";
+          break;
+        case "755304000000270271":
+          selectedDesignation = "7";
+          break;
+        case "755304000000270281":
+          selectedDesignation = "7";
+          break;
+        case "755304000000270291":
+          selectedDesignation = "7";
+          break;
+        case "755304000000270301":
+          selectedDesignation = "7";
+          break;
+        case "755304000000270311":
+          selectedDesignation = "7";
+          break;
+        case "755304000000270321":
+          selectedDesignation = "7";
+          break;
+        case "755304000000270331":
+          selectedDesignation = "7";
+          break;
+        case "755304000000270341":
+          selectedDesignation = "8";
+          break;
+        case "755304000000270351":
+          selectedDesignation = "8";
+          break;
+        case "755304000000270361":
+          selectedDesignation = "8";
+          break;
+        case "755304000000270371":
+          selectedDesignation = "8";
+          break;
+        case "755304000000270381":
+          selectedDesignation = "9";
+          break;
+        case "755304000000270391":
+          selectedDesignation = "9";
+          break;
+        case "755304000000270401":
+          selectedDesignation = "9";
+          break;
+        default:
+          selectedDesignation = "";
+      }
     }
-  }
-</script>
+      function handleDepartmentChange(DepartmentSelect) {
+        switch (DepartmentSelect.value) {
+          case "755304000000265287":
+            departmentValue = "777584";
+            break;
+          case "755304000000271009":
+            departmentValue = "683882";
+            break;
+          case "755304000000271019":
+            departmentValue = "696777";
+            break;
+          case "755304000000271029":
+            departmentValue = "838768";
+            break;
+          case "755304000000271039":
+            departmentValue = "728268";
+            break;
+          default:
+            departmentValue = "";
+        }
+        //updateEmployeeID();
+      }
+    function updateEmployeeID() {
+      const employeeIDInput = document.getElementById("EmployeeID");
+      const dateOfJoiningInput = document.getElementById("DateOfJoining");
+      const selectedDate = new Date(dateOfJoiningInput.value);
+
+      const month = String(selectedDate.getMonth() + 1).padStart(2, "0");
+      const day = String(selectedDate.getDate()).padStart(2, "0");
+      const year = selectedDate.getFullYear();
+      const currentDate = month + day + year;
+      employeeIDInput.value = selectedDesignation + "-" + departmentValue + "-" + currentDate;
+    }
+  </script>
+</div>
 </body>
 </html>
